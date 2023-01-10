@@ -2,6 +2,17 @@ class homePage {
     acceptCookies() {
         cy.get('#onetrust-reject-all-handler').should('have.text', 'Only required cookies').click()
     }
+
+    clickSignIn() {
+        cy.get('span[class*="SignInBox-module--signInText__"]').click()
+        cy.get('div[class*="SignInBox-module--modalInnerContainer__"]').should('be.visible')
+    }
+
+    clickBecomeAMember() {
+        cy.get('button[class*="CTA-module--secondary__"]').click()
+        cy.get('p[class*="SignInBox-module--description__"]').should('be.visible').should('have.text', 'Become a Member — you\'ll enjoy exclusive deals, offers, invites and rewards.')
+    }
+
     clickFromMenu(value) {
         cy.get('#menu-links li').contains(value).first().click()
     }
